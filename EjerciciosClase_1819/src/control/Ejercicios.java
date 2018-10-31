@@ -154,7 +154,7 @@ public class Ejercicios {
 		int numero = 0;
 		Random rnd = new Random();
 		for (int i = 0; i < n; i++) {
-			numero = 1 + rnd.nextInt(6); // Números aleatorios del 1 al 6
+			numero = 1 + rnd.nextInt(n); // Números aleatorios del 1 al 6
 			System.out.println(i + 1 + ".-" + numero);
 		}
 	}
@@ -188,20 +188,6 @@ public class Ejercicios {
 	 * 
 	 * }
 	 */
-	public int[] generaEstadisticaAparicion(int n, int inferior, int superior) {
-		int[] resultado = new int[superior - inferior + 1];
-		Random rnd = new Random();
-		int numero = 0;
-		for (int i = 0; i < n; i++) {
-
-			numero = inferior + rnd.nextInt(superior - inferior + 1); // Números entre inferior y superior.
-			resultado[numero - 1]++;
-			System.out.println(
-					+i + ".- Ejer1. El número " + numero + " lleva " + resultado[numero - 1] + " repeticiones");
-
-		}
-		return resultado;
-	}
 
 	public int[] generaEstadisticaAparicion1(int n, int inferior, int superior) {
 		int[] resultado = new int[superior - inferior + 1];
@@ -253,14 +239,12 @@ public class Ejercicios {
 		}
 	}
 
-	// ------ El mismo ejercicio pasando parametros
-
+	// 2.- ------ El mismo ejercicio pasando parametros
 	public String pruebaCadena(String cadena) {
-		String nombre = cadena;
-		for (int i = 0; i < nombre.length(); i++) {
-			nombre.charAt(i);
+		for (int i = 0; i < cadena.length(); i++) {
+			cadena.charAt(i);
 		}
-		return nombre;
+		return cadena;
 	}
 
 	// -------------------compara cadenas--
@@ -271,29 +255,103 @@ public class Ejercicios {
 		System.out.println("No coinciden " + (cad2.compareToIgnoreCase(cad1)) + " caracteres");
 
 	}
-	// ------ El mismo ejercicio pasando parametros
 
+	// 2.- ------ El mismo ejercicio pasando parametros
 	public int compararCadenas(String cad1, String cad2) {
-
 		return cad2.compareToIgnoreCase(cad1);
+	}
+
+	// ------ Prueba
+	public String[] listaDiasSemana(String[] dias) {
+
+		// String[] diasSemana = {"Lunes",
+		// "Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"};
+		for (int i = 0; i < dias.length; i++) {
+			System.out.print(dias[i] + ", ");
+
+		}
+
+		return dias;
+	}
+
+	// ---------------------- 31/10/2018
+	public float[] ResumenVendedor(float[][] ventas) {
+
+		float[] resultado = new float[ventas.length];
+		// iterar por filas/columnas acumulando ventas de cada vendedor
+
+		for (int i = 0; i < ventas.length; i++) {
+
+			for (int j = 0; j < ventas[i].length; j++)
+
+				resultado[i] += ventas[i][j];
+
+			System.out.println("El total de ventas de cada vendedor es: " + (i + 1) + ".- " + resultado[i]);
+
+		}
+		return resultado;
+	}
+
+	public float[] ResumenVentasPorMes(float[][] ventas) {
+
+		String[] meses = new String[ventas.length];
+		String[] vendedores = new String[3];
+		float[] resultado = new float[ventas.length];
+		float acumuladoMes = 0.0f;
+
+		// iterar por columnas/filas acumulando ventas de cada vendedor
+		for (int i = 0; i < ventas[0].length; i++) {
+			System.out.println("mes " + i);
+			acumuladoMes = 0.0f;
+			for (int j = 0; j < ventas.length; j++) {
+
+				acumuladoMes += ventas[j][i];
+				resultado[0] += ventas[j][i];
+			}System.out.println(acumuladoMes);
+		}
+
+		return resultado;
 	}
 
 	// ***************************** main **********************
 	public static void main(String[] args) {
 		Ejercicios ejercicios = new Ejercicios();
 
+		// Hay 3 filas (vendedores) y 12 columnas (meses)
+		float[][] ventasYear = { { 12.5f, 13.5f, 8.5f, 0f, 10.5f, 9.5f, 20.5f, 18.5f, 6.5f, 30.5f, 12.5f, 7.5f },
+				{ 10.5f, 15.5f, 4.5f, 6f, 10.5f, 8.5f, 14.5f, 4.5f, 8.5f, 12.5f, 15.5f, 14.5f },
+				{ 8.5f, 14.5f, 16.5f, 7f, 9.5f, 10.5f, 6.5f, 14.5f, 4.5f, 20.5f, 10.5f, 5.5f } };
+
+		
+		/* float acumulador =0.0f; for (int i = 0; i < ventasYear[0].length; i++) {
+		 System.out.println("columna " + i); acumulador = 0f; for (int j = 0; j <
+		 ventasYear.length; j++) { acumulador += ventasYear[j][i]; }
+		 System.out.println(acumulador); System.out.println(); }*/
+		 
+
+		float[] resumenVendedor;
+		// resumenVendedor = ejercicios.ResumenVendedor(ventasYear);
+		// System.out.println(resumenVendedor);
+
+		float[] ResumenVentasPorMes;
+		ejercicios.ResumenVentasPorMes(ventasYear);
+		// ------ Prueba
+		// String[] diasSemana = {"Lunes",
+		// "Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"+"\n"};
+		// ejercicios.listaDiasSemana(diasSemana);
+
 		// ------25-10-2018
-		System.out.println("No coincidencias: "+(ejercicios.compararCadenas("abcd", "abcdddddddd")));
-		ejercicios.compararCadenas();
-		
-		System.out.println(ejercicios.pruebaCadena("Las Palmas de Gran Canariasssss"));
-		ejercicios.pruebaCadena();
-		
-		
+		// System.out.println("No coincidencias: "+(ejercicios.compararCadenas("abcd",
+		// "abcdddddddd")));
+		// ejercicios.compararCadenas();
+
+		// System.out.println(ejercicios.pruebaCadena("Las Palmas de Gran
+		// Canariasssss"));
+		// ejercicios.pruebaCadena();
 
 		// ------24-10-2018
-		float[] movimientos = { 85.5f, 60.4f, -25.8f, -70.6f, 52.20f };
-		float saldo = 200f;
+		// float[] movimientos = { 85.5f, 60.4f, -25.8f, -70.6f, 52.20f };
+		// float saldo = 200f;
 		// System.out.println("El saldo final es: "+ejercicios.calculaSaldo(movimientos,
 		// saldo));
 
