@@ -294,21 +294,26 @@ public class Ejercicios {
 
 	public float[] ResumenVentasPorMes(float[][] ventas) {
 
-		String[] meses = new String[ventas.length];
-		String[] vendedores = new String[3];
+		// String[] meses = new String[ventas.length];
+		String[] vendedores = new String[3]; // puede sobrar esta variable si utilizo el parametro ventas
 		float[] resultado = new float[ventas.length];
 		float acumuladoMes = 0.0f;
-
+		
+		String[] meses = { "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiempre",
+				"octubre", "noviembre", "diciembre" };
 		// iterar por columnas/filas acumulando ventas de cada vendedor
-		for (int i = 0; i < ventas[0].length; i++) {
-			System.out.println("mes " + i);
-			acumuladoMes = 0.0f;
-			for (int j = 0; j < ventas.length; j++) {
 
-				acumuladoMes += ventas[j][i];
-				resultado[0] += ventas[j][i];
-			}System.out.println(acumuladoMes);
+		for (int k = 0; k < meses.length; k++) { // recorrer los meses del año e imprimir
 		}
+			for (int i = 0; i < ventas[0].length; i++) {
+				System.out.println("Acumulado en el mes de " + meses[i]);// venta total por mes
+				acumuladoMes = 0.0f;
+				for (int j = 0; j <vendedores.length; j++) {
+					acumuladoMes += ventas[j][i];
+					resultado[0] += ventas[j][i];
+				}
+				System.out.println(acumuladoMes + "€");
+			}
 
 		return resultado;
 	}
@@ -322,12 +327,12 @@ public class Ejercicios {
 				{ 10.5f, 15.5f, 4.5f, 6f, 10.5f, 8.5f, 14.5f, 4.5f, 8.5f, 12.5f, 15.5f, 14.5f },
 				{ 8.5f, 14.5f, 16.5f, 7f, 9.5f, 10.5f, 6.5f, 14.5f, 4.5f, 20.5f, 10.5f, 5.5f } };
 
-		
-		/* float acumulador =0.0f; for (int i = 0; i < ventasYear[0].length; i++) {
-		 System.out.println("columna " + i); acumulador = 0f; for (int j = 0; j <
-		 ventasYear.length; j++) { acumulador += ventasYear[j][i]; }
-		 System.out.println(acumulador); System.out.println(); }*/
-		 
+		/*
+		 * float acumulador =0.0f; for (int i = 0; i < ventasYear[0].length; i++) {
+		 * System.out.println("columna " + i); acumulador = 0f; for (int j = 0; j <
+		 * ventasYear.length; j++) { acumulador += ventasYear[j][i]; }
+		 * System.out.println(acumulador); System.out.println(); }
+		 */
 
 		float[] resumenVendedor;
 		// resumenVendedor = ejercicios.ResumenVendedor(ventasYear);
