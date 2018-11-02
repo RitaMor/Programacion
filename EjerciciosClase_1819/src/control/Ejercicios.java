@@ -275,7 +275,7 @@ public class Ejercicios {
 	}
 
 	// ---------------------- 31/10/2018
-	public float[] ResumenVendedor(float[][] ventas) {
+	public float[] resumenVendedor(float[][] ventas) {
 
 		float[] resultado = new float[ventas.length];
 		// iterar por filas/columnas acumulando ventas de cada vendedor
@@ -286,13 +286,13 @@ public class Ejercicios {
 
 				resultado[i] += ventas[i][j];
 
-			System.out.println("El total de ventas de cada vendedor es: " + (i + 1) + ".- " + resultado[i]);
+			System.out.println("El total de ventas del vendedor " + (i + 1) + " es: " + resultado[i]);
 
 		}
 		return resultado;
 	}
 
-	public float[] ResumenVentasPorMes(float[][] ventas) {
+	public float[] resumenVentasPorMes(float[][] ventas) {
 
 		// String[] meses = new String[ventas.length];
 		String[] vendedores = new String[3]; // puede sobrar esta variable si utilizo el parametro ventas
@@ -327,19 +327,13 @@ public class Ejercicios {
 				{ 10.5f, 15.5f, 4.5f, 6f, 10.5f, 8.5f, 14.5f, 4.5f, 8.5f, 12.5f, 15.5f, 14.5f },
 				{ 8.5f, 14.5f, 16.5f, 7f, 9.5f, 10.5f, 6.5f, 14.5f, 4.5f, 20.5f, 10.5f, 5.5f } };
 
-		/*
-		 * float acumulador =0.0f; for (int i = 0; i < ventasYear[0].length; i++) {
-		 * System.out.println("columna " + i); acumulador = 0f; for (int j = 0; j <
-		 * ventasYear.length; j++) { acumulador += ventasYear[j][i]; }
-		 * System.out.println(acumulador); System.out.println(); }
-		 */
+		float[] resumenVentasPorMes;
+		ejercicios.resumenVentasPorMes(ventasYear);
 
 		float[] resumenVendedor;
-		// resumenVendedor = ejercicios.ResumenVendedor(ventasYear);
-		// System.out.println(resumenVendedor);
+		resumenVendedor = ejercicios.resumenVendedor(ventasYear);
+		 
 
-		float[] ResumenVentasPorMes;
-		ejercicios.ResumenVentasPorMes(ventasYear);
 		// ------ Prueba
 		// String[] diasSemana = {"Lunes",
 		// "Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"+"\n"};
