@@ -139,7 +139,7 @@ public class Ejercicios {
 
 	// ------------------------17-10-2018
 	// Imprime por consola los n números enteros aleatorios
-	// entre q y 100.
+	// entre 1 y 100.
 
 	public void imprimeAleatorios(int n) { // n, Cuantos números
 		int numero = 0;
@@ -154,12 +154,13 @@ public class Ejercicios {
 		int numero = 0;
 		Random rnd = new Random();
 		for (int i = 0; i < n; i++) {
-			numero = 1 + rnd.nextInt(n); // Números aleatorios del 1 al 6
+			numero = 1 + rnd.nextInt(superior - inferior + 1); // Números aleatorios del 1 al 6
 			System.out.println(i + 1 + ".-" + numero);
 		}
 	}
 
-	// Devolver un array con números aleatorios entre "inferior y superior"
+	// Devuelve un array de números enteros aleatorios, basandonos en el método
+		// anterior
 
 	public int[] generaListaAleatorios(int n, int inferior, int superior) {
 
@@ -167,27 +168,24 @@ public class Ejercicios {
 		resultado = new int[n]; // INICIALIAZACION
 		Random rnd = new Random();
 		int numero = 0;
-		for (int i = 0; i < n; i++)
+		for (int i = 0; i < n; i++) //for (int i = 0; i < resultado.length; i++)
 
-			resultado[i] = inferior + rnd.nextInt(superior - inferior + 1); // Números entre inferior y superior.
+			System.out.println(resultado[i] = inferior + rnd.nextInt(superior - inferior + 1)); // Números entre inferior y superior.
 
 		return resultado;
 
 	}
-
-	// Devuelve un array de números enteros aleatorios, basandome en el método
-	// anterior
-	/*
-	 * public int[] generaListaAleatorios2(int n, int inferior, int superior) {
-	 * 
-	 * int[] resultado; resultado = new int[n]; Random rnd = new Random(); for (int
-	 * i = 0; i < resultado.length; i++) {
-	 * 
-	 * resultado[i] = inferior + rnd.nextInt(superior - inferior + 1); // Números
-	 * entre inferior y superior } return resultado;
-	 * 
-	 * }
-	 */
+	
+	public int sumaAleatorios(int n, int inferior, int superior) {
+		int resultado = 0;
+		Random rnd = new Random();
+		for (int i = 0; i < n; i++) {
+			
+			resultado += inferior+rnd.nextInt(superior-inferior+1);
+		}
+		
+		return resultado;
+	}
 
 	public int[] generaEstadisticaAparicion1(int n, int inferior, int superior) {
 		int[] resultado = new int[superior - inferior + 1];
@@ -286,7 +284,7 @@ public class Ejercicios {
 
 				resultado[i] += ventas[i][j];
 
-			System.out.println("El total de ventas del vendedor " + (i + 1) + " es: " + resultado[i]);
+			//System.out.println("El total de ventas del vendedor " + (i + 1) + " es: " + resultado[i]);
 
 		}
 		return resultado;
@@ -298,100 +296,47 @@ public class Ejercicios {
 		String[] vendedores = new String[3]; // puede sobrar esta variable si utilizo el parametro ventas
 		float[] resultado = new float[ventas.length];
 		float acumuladoMes = 0.0f;
-		
+
 		String[] meses = { "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiempre",
 				"octubre", "noviembre", "diciembre" };
 		// iterar por columnas/filas acumulando ventas de cada vendedor
 
 		for (int k = 0; k < meses.length; k++) { // recorrer los meses del año e imprimir
 		}
-			for (int i = 0; i < ventas[0].length; i++) {
-				System.out.println("Acumulado en el mes de " + meses[i]);// venta total por mes
-				acumuladoMes = 0.0f;
-				for (int j = 0; j <vendedores.length; j++) {
-					acumuladoMes += ventas[j][i];
-					resultado[0] += ventas[j][i];
-				}
-				System.out.println(acumuladoMes + "€");
+		
+		for (int i = 0; i < ventas[0].length; i++) {
+			System.out.println("Acumulado en el mes de " + meses[i]);// venta total por mes
+			acumuladoMes = 0.0f;
+			for (int j = 0; j < ventas.length; j++) {
+				acumuladoMes += ventas[j][i];
+				resultado[0] += ventas[j][i];
 			}
+			System.out.println(acumuladoMes + "€");
+		}
 
 		return resultado;
 	}
-
-	// ***************************** main **********************
-	public static void main(String[] args) {
-		Ejercicios ejercicios = new Ejercicios();
-
-		// Hay 3 filas (vendedores) y 12 columnas (meses)
-		float[][] ventasYear = { { 12.5f, 13.5f, 8.5f, 0f, 10.5f, 9.5f, 20.5f, 18.5f, 6.5f, 30.5f, 12.5f, 7.5f },
-				{ 10.5f, 15.5f, 4.5f, 6f, 10.5f, 8.5f, 14.5f, 4.5f, 8.5f, 12.5f, 15.5f, 14.5f },
-				{ 8.5f, 14.5f, 16.5f, 7f, 9.5f, 10.5f, 6.5f, 14.5f, 4.5f, 20.5f, 10.5f, 5.5f } };
-
-		float[] resumenVentasPorMes;
-		ejercicios.resumenVentasPorMes(ventasYear);
-
-		float[] resumenVendedor;
-		resumenVendedor = ejercicios.resumenVendedor(ventasYear);
-		 
-
-		// ------ Prueba
-		// String[] diasSemana = {"Lunes",
-		// "Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"+"\n"};
-		// ejercicios.listaDiasSemana(diasSemana);
-
-		// ------25-10-2018
-		// System.out.println("No coincidencias: "+(ejercicios.compararCadenas("abcd",
-		// "abcdddddddd")));
-		// ejercicios.compararCadenas();
-
-		// System.out.println(ejercicios.pruebaCadena("Las Palmas de Gran
-		// Canariasssss"));
-		// ejercicios.pruebaCadena();
-
-		// ------24-10-2018
-		// float[] movimientos = { 85.5f, 60.4f, -25.8f, -70.6f, 52.20f };
-		// float saldo = 200f;
-		// System.out.println("El saldo final es: "+ejercicios.calculaSaldo(movimientos,
-		// saldo));
-
-		// Persona[] lista = ejercicios.ListaPersonas(3);
-		// int[] listaAleatorios= ejercicios.generaListaAleatorios(20, 1, 5000);
-		// int[] listaAleatorios1= ejercicios.generaEstadisticaAparicion1(6, 1, 6);
-
-		// ejercicios.generaListaAleatorios(16, 1, 6);
-		// ejercicios.imprimeAleatorios(6, 1, 6);
-		// int[] estadisticaDado= ejercicios.generaEstadisticaAparicion(10, 1, 6);
-
-		// ejercicios.imprimeAleatorios(500); // Cincuenta números.
-
-		// int a = 1, b = 10, c = 4, d = 12;
-		// int menor = Ejercicios.calNumMenor(a, b, c, d);
-		// int menor = ejercicios.calNumMenor(a, b, c, d);
-		// System.out.println("el menor es : " + ejercicios.calNumMenor(a, b, c));
-		// System.out.println("el menor es : " + ejercicios.calNumMenor(x, y, z, w));
-
-		// factorial(5);
-
-		// serieFibonacci(8);
-
-		// Act: 10/10/2018
-		// System.out.println(converString("8fgf"));
-
-		/*
-		 * Ejercicios ejercicios = new Ejercicios(); int x=10; int y= 30;
-		 * ejercicios.listaIntervaloEnteros(x, y);
-		 */
-
-		// Ejercicios.pruebasAPI();
-		// new Ejercicios().pruebasAPI();
-
-		// Persona juan = new Persona();
-		// int pasos = juan.caminar(20);
-
-		// Persona juan;
-		// juan = new Persona("4545455X", "Juan Luis", 47,null);
-		// Persona persona1 = new Persona();
-		System.out.println();
-		System.out.println("Fin del programa");
+	
+	/*String x="6x9";
+	int numero = Integer.parseInt(x);*/
+		
+	public int[] convierteCadenas(String[] cadenas) { 
+		// El array de salida tiene el MISMO numero de elementos que el de entrada si un numero no es valido, se pone -1.
+		int[] numero = new int[cadenas.length];
+		for (int i = 0; i < cadenas.length; i++)
+			try {
+			numero[i] = Integer.parseInt(cadenas[i]);
+			System.out.println("Llega aqui");
+		} catch (NumberFormatException ex) {
+			// Numero no valido
+			numero[i] = -1;
+		
+		}
+				
+		
+		return numero;
 	}
+	
+
+	
 }
