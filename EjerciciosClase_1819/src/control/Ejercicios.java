@@ -487,9 +487,8 @@ public void ordenaArrayNumeros(int[] numeros) {
 				try {
 					resultado[j] += matriz[i][j];
 					acumuladoColumna += matriz[j][i];
-					//resultado[i] += matriz[j][i];
 				} catch (ArrayIndexOutOfBoundsException e) {
-					
+					continue;
 				}
 			
 		}
