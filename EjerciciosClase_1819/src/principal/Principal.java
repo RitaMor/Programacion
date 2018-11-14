@@ -73,7 +73,7 @@ public class Principal {
 		
 		// 31/10/2018
 		float[] resumenVendedor;
-		resumenVendedor = ejercicios.resumenVendedor(ventasYear);
+		//resumenVendedor = ejercicios.resumenVendedor(ventasYear);
 
 		float[] resumenVentasPorMes;
 		//ejercicios.resumenVentasPorMes(ventasYear);
@@ -88,6 +88,7 @@ public class Principal {
 		
 		// 08/11/20018
 		//System.out.println(ejercicios.esPrimo(17));
+		
 		int inicio = 1;
 		int fin = 100;
 		//ejercicios.listarPrimos(inicio, fin);
@@ -95,14 +96,17 @@ public class Principal {
 		//ejercicios.listarPrimos2(500, 5);
 		int desde = 500;
 		int cuantos = 5;
-		int[] resultado = ejercicios.listarPrimos3(desde, cuantos);
-		// ------------------13/11/2018
+		//int[] resultado = ejercicios.listarPrimos3(desde, cuantos);
+		// 13/11/2018
+		
 		int[] numeros= {1,9,6,10,50,2,6,20,7};
-		ejercicios.ordenaArrayNumeros(numeros);
-		// -----------------14/11/2018
+		//ejercicios.ordenaArrayNumeros(numeros);
+		
+		// 14/11/2018
 		String[] cadenas= {"sábado ", "lunes ","viernes ","miércoles ","martes "};
-		ejercicios.ordenaArrayCadenas(cadenas);
-		// ------------------14/11/2018
+		//ejercicios.ordenaArrayCadenas(cadenas);
+		
+		// 14/11/2018
 		//int[] lista = ejercicios.generaListaAleatorios(1000, 1, 5000); //crear variable apara recoger la lista
 		//ejercicios.ordenaArrayNumeros(lista);
 		

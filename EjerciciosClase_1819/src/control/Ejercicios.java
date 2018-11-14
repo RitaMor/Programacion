@@ -144,6 +144,7 @@ public class Ejercicios {
 	public void imprimeAleatorios(int n) { // n, Cuantos números
 		int numero = 0;
 		Random rnd = new Random();
+		
 		for (int i = 0; i < n; i++) {
 			numero = 1 + rnd.nextInt(6); // Números aleatorios del 1 al 6
 			System.out.println(i + ".-" + numero);
@@ -153,6 +154,7 @@ public class Ejercicios {
 	public void imprimeAleatorios(int n, int inferior, int superior) { // n, Cuantos números
 		int numero = 0;
 		Random rnd = new Random();
+		
 		for (int i = 0; i < n; i++) {
 			numero = 1 + rnd.nextInt(superior - inferior + 1); // Números aleatorios del 1 al 6
 			System.out.println(i + 1 + ".-" + numero);
@@ -168,6 +170,7 @@ public class Ejercicios {
 		resultado = new int[n]; // INICIALIAZACION
 		Random rnd = new Random();
 		int numero = 0;
+		
 		for (int i = 0; i < n; i++) // for (int i = 0; i < resultado.length; i++)
 
 			System.out.println(resultado[i] = inferior + rnd.nextInt(superior - inferior + 1)); // Números entre
@@ -178,8 +181,10 @@ public class Ejercicios {
 	}
 
 	public int sumaAleatorios(int n, int inferior, int superior) {
+		
 		int resultado = 0;
 		Random rnd = new Random();
+		
 		for (int i = 0; i < n; i++) {
 
 			resultado += inferior + rnd.nextInt(superior - inferior + 1);
@@ -191,6 +196,7 @@ public class Ejercicios {
 	public int[] generaEstadisticaAparicion1(int n, int inferior, int superior) {
 		int[] resultado = new int[superior - inferior + 1];
 		int[] numero = this.generaListaAleatorios(n, inferior, superior);
+		
 		for (int i = 0; i < n; i++) {
 
 			resultado[numero[i] - 1]++;
@@ -205,8 +211,11 @@ public class Ejercicios {
 	// 1.- Crear el prototipo, 2.- Crear nombreMetodo, 3.- Implementación, 4.-
 	// Ejecucion
 	public Persona[] ListaPersonas(int n) {
+		
 		Persona[] lista = new Persona[n];
+		
 		for (int i = 0; i < n; i++)
+			
 			lista[i] = new Persona();
 
 		return lista;
@@ -217,8 +226,8 @@ public class Ejercicios {
 	public float calculaSaldo(float[] movimientos, float SaldoInicial) {
 
 		float saldoFinal = SaldoInicial;
+		
 		for (int i = 0; i < movimientos.length; i++)
-
 			saldoFinal += movimientos[i];
 
 		// System.out.println((i+".- "+saldoFinal+"+"+movimientos[i]+"= "+(saldoFinal +=
@@ -233,6 +242,7 @@ public class Ejercicios {
 	public void pruebaCadena() {
 		String nombre = "Las Palmas de Gran Canaria";// declaramos el objeto tipo String
 		// iterar en la cadena mostrando todos sus caracteres
+		
 		for (int i = 0; i < nombre.length(); i++) {
 			System.out.print(nombre.charAt(i));
 		}
@@ -240,6 +250,7 @@ public class Ejercicios {
 
 	// 2.- ------ El mismo ejercicio pasando parametros
 	public String pruebaCadena(String cadena) {
+		
 		for (int i = 0; i < cadena.length(); i++) {
 			cadena.charAt(i);
 		}
@@ -280,7 +291,6 @@ public class Ejercicios {
 		// iterar por filas/columnas acumulando ventas de cada vendedor
 
 		for (int i = 0; i < ventas.length; i++) {
-
 			for (int j = 0; j < ventas[i].length; j++)
 
 				resultado[i] += ventas[i][j];
@@ -299,8 +309,8 @@ public class Ejercicios {
 		float[][] ventasYear = { { 12.5f, 13.5f, 8.5f, 0f, 10.5f, 9.5f, 20.5f, 18.5f, 6.5f, 30.5f, 12.5f, 7.5f },
 				{ 10.5f, 15.5f, 4.5f, 6f, 10.5f, 8.5f, 14.5f, 4.5f, 8.5f, 12.5f, 15.5f, 14.5f },
 				{ 8.5f, 14.5f, 16.5f, 7f, 9.5f, 10.5f, 6.5f, 14.5f, 4.5f, 20.5f, 10.5f, 5.5f } };
-
 		float[] ventas = resumenVendedor(ventasYear);
+		
 		for (int i = 0; i < ventas.length; i++) {
 			System.out.println(nombresVendedor[i] + " : " + ventas[i]);
 
@@ -319,7 +329,9 @@ public class Ejercicios {
 				"octubre", "noviembre", "diciembre" };
 
 		for (int i = 0; i < ventas[0].length; i++) { // Recorrer los meses del año
+			
 			System.out.println("Acumulado en el mes de " + meses[i]);// venta total por mes
+			
 			for (int j = 0; j < ventas.length; j++) {
 				acumuladoMes += ventas[j][i];
 				resultado[i] += ventas[j][i];
@@ -339,8 +351,10 @@ public class Ejercicios {
 	public int[] convierteCadenas(String[] cadenas) {
 		// El array de salida tiene el MISMO numero
 		// de elementos que el de entrada
-		// si un numero no es valido, se pone -1.
+		// si un numero no es valido, devuelve -1.
+		
 		int[] numero = new int[cadenas.length];
+		
 		for (int i = 0; i < cadenas.length; i++)
 			try {
 				numero[i] = Integer.parseInt(cadenas[i]);
@@ -380,6 +394,7 @@ public class Ejercicios {
 	// 08/11/2018
 	// Comprueba si número es primo
 	public boolean esPrimo(int num) {// True o false: Número primo...
+		
 		for (int i = 2; i < num; i++) // itera desde 2 hasta número pasado por parametro
 			if (num % i == 0) // comprueba si resto de división (módulo) es 0.
 				return false;
@@ -399,6 +414,7 @@ public class Ejercicios {
 	public void listarPrimos2(int desde, int cuantos) {
 
 		int contador = 0;
+		
 		while (contador < cuantos) {
 			if (esPrimo(desde)) {
 				System.out.print(desde + ", ");
@@ -446,7 +462,9 @@ public int[] listarPrimos4(int desde, int cuantos) {
 
 
 public void ordenaArrayNumeros(int[] numeros) {
+	
 	int auxiliar = 0;
+	
 	for (int i = 0; i < numeros.length - 1; i++) {
 		for (int j = i + 1; j < numeros.length; j++) {
 
@@ -461,9 +479,10 @@ public void ordenaArrayNumeros(int[] numeros) {
 
 //14/11/2018
 	public void ordenaArrayCadenas(String[] cadenas) {
+		
 		for (int i = 0; i < cadenas.length - 1; i++) {
 			for (int j = i + 1; j < cadenas.length; j++)
-				if (cadenas[i].compareTo(cadenas[j]) > 0) { // si la comparacion es mayor que 0
+				if (cadenas[i].compareTo(cadenas[j]) > 0) { // Si cadena i compara mas de 0 veces entra en siguiente.
 					String aux = cadenas[i];
 					cadenas[i] = cadenas[j];
 					cadenas[j] = aux;
@@ -473,23 +492,32 @@ public void ordenaArrayNumeros(int[] numeros) {
 	}
 
 	public int[] sumaColumnasMatrizHeterogenea(int[][] matriz) {
+		
 			int acumuladoColumna=0;
 			int numColMAX=0;
+			
 		// Averiguar número maximo de columnas
 		for (int i = 0; i < matriz.length; i++) 
 			if(matriz[i].length>numColMAX)
 				numColMAX = matriz[i].length;
-	
+		System.out.println(acumuladoColumna);
+		
 		int[] resultado = new int[numColMAX];
+		
 		// recorrer matriz por columnas
-		for (int j = 0; j < numColMAX; j++) {
+		for (int j = 0; j < numColMAX; j++) {System.out.println("Columna   ["+j+"]");
 			for (int i = 0; i < matriz.length; i++)
-				try {
+				try {System.out.println("Fila [" + i + "]:  " + matriz[i][j]);
 					resultado[j] += matriz[i][j];
-					acumuladoColumna += matriz[j][i];
+					acumuladoColumna += matriz[j][i]; //Suma de columnas
+					
 				} catch (ArrayIndexOutOfBoundsException e) {
 					
 				}
+			
+			System.out.println("          ---");
+			System.out.println("    Total: "+resultado[j]);
+			System.out.println();
 			
 		}
 		return resultado;
