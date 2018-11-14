@@ -160,7 +160,7 @@ public class Ejercicios {
 	}
 
 	// Devuelve un array de números enteros aleatorios, basandonos en el método
-		// anterior
+	// anterior
 
 	public int[] generaListaAleatorios(int n, int inferior, int superior) {
 
@@ -168,22 +168,23 @@ public class Ejercicios {
 		resultado = new int[n]; // INICIALIAZACION
 		Random rnd = new Random();
 		int numero = 0;
-		for (int i = 0; i < n; i++) //for (int i = 0; i < resultado.length; i++)
+		for (int i = 0; i < n; i++) // for (int i = 0; i < resultado.length; i++)
 
-			System.out.println(resultado[i] = inferior + rnd.nextInt(superior - inferior + 1)); // Números entre inferior y superior.
+			System.out.println(resultado[i] = inferior + rnd.nextInt(superior - inferior + 1)); // Números entre
+																								// inferior y superior.
 
 		return resultado;
 
 	}
-	
+
 	public int sumaAleatorios(int n, int inferior, int superior) {
 		int resultado = 0;
 		Random rnd = new Random();
 		for (int i = 0; i < n; i++) {
-			
-			resultado += inferior+rnd.nextInt(superior-inferior+1);
+
+			resultado += inferior + rnd.nextInt(superior - inferior + 1);
 		}
-		
+
 		return resultado;
 	}
 
@@ -284,59 +285,216 @@ public class Ejercicios {
 
 				resultado[i] += ventas[i][j];
 
-			//System.out.println("El total de ventas del vendedor " + (i + 1) + " es: " + resultado[i]);
+			// System.out.println("El total de ventas del vendedor " + (i + 1) + " es: " +
+			// resultado[i]);
 
 		}
 		return resultado;
 	}
 
+	// 06/11/2018
+	public void mostrarVentasVendedor() {
+
+		String[] nombresVendedor = { "Juan Carlos", "Isabel", "Marta" };
+		float[][] ventasYear = { { 12.5f, 13.5f, 8.5f, 0f, 10.5f, 9.5f, 20.5f, 18.5f, 6.5f, 30.5f, 12.5f, 7.5f },
+				{ 10.5f, 15.5f, 4.5f, 6f, 10.5f, 8.5f, 14.5f, 4.5f, 8.5f, 12.5f, 15.5f, 14.5f },
+				{ 8.5f, 14.5f, 16.5f, 7f, 9.5f, 10.5f, 6.5f, 14.5f, 4.5f, 20.5f, 10.5f, 5.5f } };
+
+		float[] ventas = resumenVendedor(ventasYear);
+		for (int i = 0; i < ventas.length; i++) {
+			System.out.println(nombresVendedor[i] + " : " + ventas[i]);
+
+		}
+
+	}
+
+	// 31/10/2018
 	public float[] resumenVentasPorMes(float[][] ventas) {
 
-		// String[] meses = new String[ventas.length];
-		String[] vendedores = new String[3]; // puede sobrar esta variable si utilizo el parametro ventas
-		float[] resultado = new float[ventas.length];
+		float[] resultado = new float[ventas[0].length];
+
 		float acumuladoMes = 0.0f;
 
 		String[] meses = { "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiempre",
 				"octubre", "noviembre", "diciembre" };
-		// iterar por columnas/filas acumulando ventas de cada vendedor
 
-		for (int k = 0; k < meses.length; k++) { // recorrer los meses del año e imprimir
-		}
-		
-		for (int i = 0; i < ventas[0].length; i++) {
+		for (int i = 0; i < ventas[0].length; i++) { // Recorrer los meses del año
 			System.out.println("Acumulado en el mes de " + meses[i]);// venta total por mes
-			acumuladoMes = 0.0f;
 			for (int j = 0; j < ventas.length; j++) {
 				acumuladoMes += ventas[j][i];
-				resultado[0] += ventas[j][i];
+				resultado[i] += ventas[j][i];
 			}
-			System.out.println(acumuladoMes + "€");
+			System.out.println(resultado[i] + " €");
 		}
 
 		return resultado;
 	}
-	
-	/*String x="6x9";
-	int numero = Integer.parseInt(x);*/
-		
-	public int[] convierteCadenas(String[] cadenas) { 
-		// El array de salida tiene el MISMO numero de elementos que el de entrada si un numero no es valido, se pone -1.
+
+	/*
+	 * //pasar cadena a numero String x="6x9"; int numero = Integer.parseInt(x);
+	 */
+
+	// 6/11/2018
+
+	public int[] convierteCadenas(String[] cadenas) {
+		// El array de salida tiene el MISMO numero
+		// de elementos que el de entrada
+		// si un numero no es valido, se pone -1.
 		int[] numero = new int[cadenas.length];
 		for (int i = 0; i < cadenas.length; i++)
 			try {
-			numero[i] = Integer.parseInt(cadenas[i]);
-			System.out.println("Llega aqui");
-		} catch (NumberFormatException ex) {
-			// Numero no valido
-			numero[i] = -1;
-		
-		}
-				
-		
+				numero[i] = Integer.parseInt(cadenas[i]);
+				System.out.println("Llega aqui");
+			} catch (NumberFormatException ex) {
+				// Numero no valido
+				numero[i] = -1;
+
+			}
 		return numero;
 	}
-	
 
+	// 7/11/2018
+	// Mostrar hora con retardo de un segundo
+	public void mostrarHora() {
+
+		for (int h = 0; h < 1; h++) {
+			for (int m = 0; m < 60; m++) {
+				for (int s = 0; s < 60; s++) {
+
+					System.out.println(h + ": " + m + ": " + s);
+
+					try { //
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+
+			}
+
+		}
+
+	}
+
+	// 08/11/2018
+	// Comprueba si número es primo
+	public boolean esPrimo(int num) {// True o false: Número primo...
+		for (int i = 2; i < num; i++) // itera desde 2 hasta número pasado por parametro
+			if (num % i == 0) // comprueba si resto de división (módulo) es 0.
+				return false;
+		return true;
+	}
+
+	public void listarPrimos(int desde, int hasta) {
+
+		for (int i = desde; i < hasta; i++) {
+			if (esPrimo(i));
+
+			System.out.print(i + ", ");
+
+		}
+	}
+
+	public void listarPrimos2(int desde, int cuantos) {
+
+		int contador = 0;
+		while (contador < cuantos) {
+			if (esPrimo(desde)) {
+				System.out.print(desde + ", ");
+				contador++;
+			}
+			desde++;
+
+		}
+
+	}
+
+	public int[] listarPrimos3(int desde, int cuantos) {
+		
+		int[] resultado = new int[cuantos];
+		int contador = 0;
+	
+		while (contador < cuantos) {
+			if (esPrimo(desde)) {
+				resultado[contador] = desde;
+				contador++;
+				System.out.print(desde+" , ");
+			}
+			desde++;
+		}
+		return resultado;
+		
+	}
+	
+public int[] listarPrimos4(int desde, int cuantos) {
+		
+		int[] resultado = new int[cuantos];
+		int contador = 0;
+	
+		while (contador < cuantos) {
+			if (esPrimo(desde)) {
+				resultado[contador] = desde;
+				contador++;
+				System.out.print(desde+" , ");
+			}
+			desde++;
+		}
+		return resultado;
+		
+	}
+
+
+public void ordenaArrayNumeros(int[] numeros) {
+	int auxiliar = 0;
+	for (int i = 0; i < numeros.length - 1; i++) {
+		for (int j = i + 1; j < numeros.length; j++) {
+
+			if (numeros[i] > numeros[j]) {
+				auxiliar = numeros[i];
+				numeros[i] = numeros[j];
+				numeros[j] = auxiliar;
+			}
+		}
+	}
+}
+
+//14/11/2018
+	public void ordenaArrayCadenas(String[] cadenas) {
+		for (int i = 0; i < cadenas.length - 1; i++) {
+			for (int j = i + 1; j < cadenas.length; j++)
+				if (cadenas[i].compareTo(cadenas[j]) > 0) { // si la comparacion es mayor que 0
+					String aux = cadenas[i];
+					cadenas[i] = cadenas[j];
+					cadenas[j] = aux;
+				}
+
+		}
+	}
+
+	public int[] sumaColumnasMatrizHeterogenea(int[][] matriz) {
+			int acumuladoColumna=0;
+			int numColMAX=0;
+		// Averiguar número maximo de columnas
+		for (int i = 0; i < matriz.length; i++) 
+			if(matriz[i].length>numColMAX)
+				numColMAX = matriz[i].length;
+	
+		int[] resultado = new int[numColMAX];
+		// recorrer matriz por columnas
+		for (int j = 0; j < numColMAX; j++) {
+			for (int i = 0; i < matriz.length; i++)
+				try {
+					resultado[j] += matriz[i][j];
+					acumuladoColumna += matriz[j][i];
+					//resultado[i] += matriz[j][i];
+				} catch (ArrayIndexOutOfBoundsException e) {
+					
+				}
+			
+		}
+		return resultado;
+	}
+	
 	
 }
